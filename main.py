@@ -9,8 +9,11 @@ from selenium_stealth import stealth
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import dotenv
 
 from YouTubeCall import scopes, callAPI
+
+dotenv.load_dotenv()
 
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
@@ -25,8 +28,9 @@ credentials = flow.run_console()
 youtube = googleapiclient.discovery.build(
     api_service_name, api_version, credentials=credentials)
 
-mail_address = 'dummyAccCV@gmail.com'
-password = 'DummyAccount10-'
+mail_address = os.getenv("MAIL_ADDRESS")
+password = os.getenv("PASSWORD")
+
 
 options = webdriver.ChromeOptions()
 options.add_extension("Adblock-für-Youtube™_v5.1.2.crx")

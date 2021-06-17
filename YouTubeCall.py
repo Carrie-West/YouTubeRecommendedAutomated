@@ -20,12 +20,6 @@ def callAPI(youtube, video):
        id=video
     )
 
-    #request = youtube.search().list(
-     #   part="snippet",
-      #  type="video",
-       # relatedToVideoId="wyABTfR9UTU"
-    #)
-
     response = request.execute()
     data = pd.json_normalize(response['items'])
 
